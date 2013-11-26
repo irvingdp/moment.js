@@ -59,7 +59,6 @@
   <ItemGroup>
     <Content Include="index.html" />
     <Content Include="moment.min.js" />
-    <Content Include="utc2local.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

@@ -12,25 +12,14 @@
 
                     var timeObj = moment.utc(timeString);
                     timeObj.utc();                    
-                    //resultHtml += ("moment format(UTC):" + timeObj.format() + "<br>");
-                    resultHtml += ("customerTimeFormat(UTC):" + getCustomerTimeFormat(timeObj) + "<br>");
+                    resultHtml += ("(UTC):" + timeObj.format("YYYY-MM-DD HH:mm:ss Z") + "<br>");
                     timeObj.local();
-                    //resultHtml += ("moment format(Local):" + timeObj.format() + "<br>");
-                    resultHtml += ("customerTimeFormat(Local):" + getCustomerTimeFormat(timeObj) + "<br>");
+                    resultHtml += ("(Local):" + timeObj.format("YYYY-MM-DD HH:mm:ss Z")  + "<br>");
                     
                     return resultHtml;
                 }
             }
-            function getCustomerTimeFormat(timeObj)
-            {
-                var result = timeObj.year() + "/" +
-                 timeObj.month() + "/" +
-                 timeObj.day() + " " +
-                 timeObj.hours() + ":" +
-                 timeObj.minute() + ":" +
-                 timeObj.second() + "  ";
-                 return result;
-            }
+          
         })();
         function btnClick()
         {
