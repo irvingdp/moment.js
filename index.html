@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <script src="moment.min.js" type="text/javascript"></script>
+    <script>
+        var timeapp = (function() {
+            return {
+                run: function (timeString) {
+                    var resultHtml = '';
+
+                    var timeObj = moment.utc(timeString);
+                    timeObj.utc();                    
+                    //resultHtml += ("moment format(UTC):" + timeObj.format() + "<br>");
+                    resultHtml += ("customerTimeFormat(UTC):" + getCustomerTimeFormat(timeObj) + "<br>");
+                    timeObj.local();
+                    //resultHtml += ("moment format(Local):" + timeObj.format() + "<br>");
+                    resultHtml += ("customerTimeFormat(Local):" + getCustomerTimeFormat(timeObj) + "<br>");
+                    
+                    return resultHtml;
+                }
+            }
+            function getCustomerTimeFormat(timeObj)
+            {
+                var result = timeObj.year() + "/" +
+                 timeObj.month() + "/" +
+                 timeObj.day() + " " +
+                 timeObj.hours() + ":" +
+                 timeObj.minute() + ":" +
+                 timeObj.second() + "  ";
+                 return result;
+            }
+        })();
+        function btnClick()
+        {
+            var utcTimeString = document.getElementById("txtTime").value;
+            document.getElementById("divResult").innerHTML = timeapp.run(utcTimeString);
+            //return false;
+        }
+        //timeapp.run();
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+         //please input UTC time string , follow iso8601 time string format
+    <input id="txtTime" type="text" value="2013-02-08T09:30:26" />
+        <button id="btn1" onclick="javascript:btnClick();return false;">Go</button>
+         <br />
+         <br />
+           <div id="divResult">
+
+        </div>
+         <br />
+         <br />
+         <br />
+         <p style="box-sizing: border-box; margin: 0px 0px 10px; color: rgb(0, 0, 0); font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: normal; letter-spacing: normal; line-height: 25px; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: rgb(245, 245, 245);">
+             The following ISO-8601 formats are supported across all browsers.</p>
+         <pre style="box-sizing: border-box; font-family: Consolas, monaco, monospace; font-size: 14px; white-space: pre; word-wrap: break-word; border: 1px solid rgb(227, 227, 227); border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; color: rgb(51, 51, 51); padding: 5px 10px; margin: 0px 0px 20px; line-height: 24px; background-color: rgb(255, 255, 255); font-weight: 100; font-style: normal; font-variant: normal; letter-spacing: normal; orphans: auto; text-align: start; text-indent: 0px; text-transform: none; widows: auto; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-position: initial initial; background-repeat: initial initial;"><code class="lang-javascript" style="box-sizing: border-box; font-family: Consolas, monaco, monospace; font-size: 1em; padding: 0px; background-color: rgb(255, 255, 255); border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; box-shadow: none; background-position: initial initial; background-repeat: initial initial;"><span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-02-08&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-02-08T09&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-02-08 09&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-02-08T09:30&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-02-08 09:30&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-02-08T09:30:26&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-02-08 09:30:26&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-02-08T09:30:26.123&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-02-08 09:30:26.123&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-02-08T09:30:26 Z&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-02-08 09:30:26 Z&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-W06-5&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-W06-5T09&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-W06-5 09&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-W06-5T09:30&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-W06-5 09:30&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-W06-5T09:30:26&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-W06-5 09:30:26&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-W06-5T09:30:26.123&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-W06-5 09:30:26.123&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-W06-5T09:30:26 Z&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-W06-5 09:30:26 Z&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-039&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-039T09&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-039 09&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-039T09:30&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-039 09:30&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-039T09:30:26&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-039 09:30:26&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-039T09:30:26.123&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-039 09:30:26.123&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-039T09:30:26 Z&quot;</span>
+<span class="string" style="box-sizing: border-box; color: rgb(237, 118, 119);">&quot;2013-039 09:30:26 Z&quot;</span></code></pre>
+    </div>
+       
+     
+    </form>
+</body>
+</html>
